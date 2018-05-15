@@ -24,14 +24,13 @@ namespace PWApi.Controllers
 		 }*/
 
 		// GET: api/Accounts
+		[HttpGet]
+		[Route("api/ba")]
 		public IQueryable<BankAccountDTO> GetBankAccount ()
 		{
-			/*
-			return db.BankAccounts.Where(a => a.BankCustomerId == userId).Include(a => a.TransactionsFromAccount);*/
-
-			
-			var acc = from a in db.BankAccounts
-					  /*where a.BankCustomerId == userId*/
+		
+		     var acc = from a in db.BankAccounts
+					 
 					  select new BankAccountDTO()
 					  {
 						  Id = a.Id,
@@ -46,18 +45,29 @@ namespace PWApi.Controllers
 		}
 
 
-	/*	// GET: api/BankAccounts/5
-		[ResponseType(typeof(BankAccount))]
+		// GET: api/BankAccounts/5
+		[ResponseType(typeof(BankAccountDTO))]
         public async Task<IHttpActionResult> GetBankAccount(int id)
         {
-            BankAccount bankAccount = await db.BankAccounts.FindAsync(id);
-            if (bankAccount == null)
+			BankAccountDTO bankAccount = await db.BankAccounts.Select(a =>
+			new BankAccountDTO()
+			{
+				Id = a.Id,
+				OwnerId = a.BankCustomerId,
+				OwnerName = a.AccountOwner.FirstName + " " + a.AccountOwner.LastName,
+				Balance = a.Balance
+
+			}).SingleOrDefaultAsync(a => a.Id==id);
+
+
+				
+			if (bankAccount == null)
             {
                 return NotFound();
             }
 
             return Ok(bankAccount);
-        }*/
+        }
 
         // PUT: api/BankAccounts/5
         [ResponseType(typeof(void))]
