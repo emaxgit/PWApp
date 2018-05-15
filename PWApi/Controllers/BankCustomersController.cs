@@ -20,7 +20,8 @@ namespace PWApi.Controllers
         // GET: api/BankCustomers
         public IQueryable<BankCustomer> GetBankCustomers()
         {
-            return db.BankCustomers;
+			
+			return db.BankCustomers;
         }
 
         // GET: api/BankCustomers/5

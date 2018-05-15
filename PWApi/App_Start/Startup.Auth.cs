@@ -46,10 +46,10 @@ namespace PWApi
             // Enable the application to use bearer tokens to authenticate users
             app.UseOAuthBearerTokens(OAuthOptions);
 
-            // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+             //Uncomment the following lines to enable logging in with third party login providers
+            app.UseMicrosoftAccountAuthentication(
+              clientId: "user",
+               clientSecret: "1234");
 
             //app.UseTwitterAuthentication(
             //    consumerKey: "",

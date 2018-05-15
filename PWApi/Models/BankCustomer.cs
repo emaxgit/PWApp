@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -14,7 +15,11 @@ namespace PWApi.Models
 			public string FirstName { get; set; }
 			public string LastName { get; set; }
 
+		    /*[InverseProperty("BankCustomerId")]
+		    public BankAccount BankAccounts { get; set; }*/
+
+
 		    public virtual List<BankAccount> BankAccounts { get; set; } 
-		
+
 	}
 }

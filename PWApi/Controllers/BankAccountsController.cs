@@ -17,14 +17,31 @@ namespace PWApi.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/BankAccounts
-        public IQueryable<BankAccount> GetBankAccounts()
-        {
-            return db.BankAccounts;
-        }
+		/* // GET: api/BankAccounts
+		 public IQueryable<BankAccount> GetBankAccounts()
+		 {
+			 return db.BankAccounts.Where(a => a.BankCustomerId == userId).Include(a => a.Transactions);
+		 }*/
 
-        // GET: api/BankAccounts/5
-        [ResponseType(typeof(BankAccount))]
+		// GET: api/Accounts
+		public IQueryable<BankAccountDTO> GetBankAccount ()
+		{
+			/*int userId = 1;
+			return db.BankAccounts.Where(a => a.BankCustomerId == userId).Include(a => a.TransactionsFromAccount);*/
+			
+			var acc = from a in db.BankAccounts
+					  select new BankAccountDTO()
+					  {
+						  Id = a.Id,
+						  Number = a.Number
+					  };
+			return acc;
+
+		}
+
+
+		// GET: api/BankAccounts/5
+		[ResponseType(typeof(BankAccount))]
         public async Task<IHttpActionResult> GetBankAccount(int id)
         {
             BankAccount bankAccount = await db.BankAccounts.FindAsync(id);

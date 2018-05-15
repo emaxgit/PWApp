@@ -19,7 +19,7 @@ namespace PWApi.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+	/*public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -34,5 +34,24 @@ namespace PWApi.Models
         {
             return new ApplicationDbContext();
         }
-    }
-}
+    }*/
+
+	public class ApplicationDbContext : DbContext
+	{
+		public ApplicationDbContext()
+			: base("DefaultConnection")
+		{
+		}
+
+		public DbSet<BankAccount> BankAccounts { get; set; }
+		public DbSet<Transaction> Transactions { get; set; }
+		public DbSet<BankCustomer> BankCustomers { get; set; }
+
+		public static ApplicationDbContext Create()
+		{
+			return new ApplicationDbContext();
+		}
+	}
+
+
+	}
