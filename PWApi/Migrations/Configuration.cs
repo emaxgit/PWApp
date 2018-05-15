@@ -15,7 +15,7 @@ namespace PWApi.Migrations
 
         protected override void Seed(PWApi.Models.ApplicationDbContext context)
 		{
-			context.BankCustomers.AddOrUpdate(x => x.Id,
+		/*	context.BankCustomers.AddOrUpdate(x => x.Id,
 				  new BankCustomer() { Id = 1, Email = "elena@mail.ru" , Password ="123", FirstName="elena", LastName="maximova"},
 				  new BankCustomer() { Id = 2, Email = "charles@gmail.com", Password = "123", FirstName = "charles", LastName = "dickens" },
 				  new BankCustomer() { Id = 3, Email = "bruce@gmail.com", Password = "123", FirstName = "bruce", LastName = "willis" }
@@ -45,7 +45,7 @@ namespace PWApi.Migrations
 					Balance = 550,
 					OpenDate = DateTime.Now,
 					BankCustomerId = 3
-				});
+				});*/
 		}
     }
 }

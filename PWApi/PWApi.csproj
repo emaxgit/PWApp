@@ -250,6 +250,10 @@
     <Compile Include="Migrations\201805151244141_updated.Designer.cs">
       <DependentUpon>201805151244141_updated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805151538234_newcontext.cs" />
+    <Compile Include="Migrations\201805151538234_newcontext.Designer.cs">
+      <DependentUpon>201805151538234_newcontext.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -360,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805151244141_updated.resx">
       <DependentUpon>201805151244141_updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805151538234_newcontext.resx">
+      <DependentUpon>201805151538234_newcontext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
