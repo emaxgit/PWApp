@@ -46,8 +46,10 @@ namespace PWApi.Controllers
 
 
 		// GET: api/BankAccounts/5
+		[HttpGet]
+		[Route("api/ba/owner/{ownerId}")]
 		[ResponseType(typeof(BankAccountDTO))]
-        public async Task<IHttpActionResult> GetBankAccount(int id)
+        public async Task<IHttpActionResult> GetBankAccount(int ownerId)
         {
 			BankAccountDTO bankAccount = await db.BankAccounts.Select(a =>
 			new BankAccountDTO()
@@ -57,7 +59,7 @@ namespace PWApi.Controllers
 				OwnerName = a.AccountOwner.FirstName + " " + a.AccountOwner.LastName,
 				Balance = a.Balance
 
-			}).SingleOrDefaultAsync(a => a.Id==id);
+			}).SingleOrDefaultAsync(a => a.OwnerId== ownerId);
 
 
 				
