@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Data.Entity;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -24,8 +25,12 @@ namespace PWApi.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        
-        public static ApplicationDbContext Create()
+
+		public DbSet<BankAccount> BankAccounts { get; set; }
+		public DbSet<Transaction> Transactions { get; set; }
+		public DbSet<BankCustomer> BankCustomers { get; set; }
+
+		public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
