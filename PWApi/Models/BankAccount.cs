@@ -24,12 +24,14 @@ namespace PWApi.Models
 		public DateTime OpenDate { get; set; }
 
 		//foreign key
-		[ForeignKey("BankCustomerId")]
+		
 		public int BankCustomerId { get; set; }
+		[ForeignKey("BankCustomerId")]
+		public BankCustomer AccountOwner { get; set; }
 
 		//for navigation Purposes
 		//public virtual ICollection<Transaction> Transactions { get; set; }
-		public BankCustomer AccountOwner { get; set; }
+
 		[InverseProperty("SorceBankAccountId")]
 		public List<Transaction> TransactionsFromAccount { get; set; }
 	}
