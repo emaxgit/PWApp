@@ -21,17 +21,19 @@ namespace PWApi.Models
 			public float Ammount { get; set; }
 
 		//foreign keys
-			[ForeignKey("SorceBankAccountId")]
-			public int SorceBankAccountId { get; set; }
-			
-			[ForeignKey("CorrecpondentBankAccountAId")]
-			public int CorrecpondentBankAccountAId { get; set; }
 
-		  
+		public int CorrecpondentBankAccountAId { get; set; }
+		//[ForeignKey("CorrecpondentBankAccountId")]
+		public BankAccount CorrespondentBankAccount { get; set; }
 
-			//  Navigation property
-			public BankAccount CorrespondentBankAccount { get; set; }
-			public BankAccount SourseBankAccount { get; set; }
+
+		
+		public int SorceBankAccountId { get; set; }
+		//[ForeignKey("SorceBankAccountId")]
+		public BankAccount SourseBankAccount { get; set; }
+
+
+		
 			
 
 

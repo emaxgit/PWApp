@@ -14,55 +14,38 @@ namespace PWApi.Migrations
         }
 
         protected override void Seed(PWApi.Models.ApplicationDbContext context)
-        {
-			//  This method will be called after migrating to the latest version.
-
-			//  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-			//  to avoid creating duplicate seed data.
-
-		/*	context.BankCustomers.AddOrUpdate(x => x.Id,
-			   new BankCustomer() { Id = 1, Name = "Jane Austen" },
-			   new BankCustomer() { Id = 2, Name = "Charles Dickens" },
-			   new BankCustomer() { Id = 3, Name = "Miguel de Cervantes" }
-			   );
+		{
+			context.BankCustomers.AddOrUpdate(x => x.Id,
+				  new BankCustomer() { Id = 1, Email = "elena@mail.ru" , Password ="123", FirstName="elena", LastName="maximova"},
+				  new BankCustomer() { Id = 2, Email = "charles@gmail.com", Password = "123", FirstName = "charles", LastName = "dickens" },
+				  new BankCustomer() { Id = 3, Email = "bruce@gmail.com", Password = "123", FirstName = "bruce", LastName = "willis" }
+				  );
 
 			context.BankAccounts.AddOrUpdate(x => x.Id,
 				new BankAccount()
 				{
 					Id = 1,
-					Title = "Pride and Prejudice",
-					Year = 1813,
-					AuthorId = 1,
-					Price = 9.99M,
-					Genre = "Commedy of manners"
+					Number = "12345678",
+					Balance = 550,
+					OpenDate = DateTime.Now,
+					BankCustomerId = 1
 				},
 				new BankAccount()
 				{
-					Id = 2,
-					Title = "Northanger Abbey",
-					Year = 1817,
-					AuthorId = 1,
-					Price = 12.95M,
-					Genre = "Gothic parody"
+					Id = 1,
+					Number = "87654321",
+					Balance = 550,
+					OpenDate = DateTime.Now,
+					BankCustomerId = 2
 				},
 				new BankAccount()
 				{
-					Id = 3,
-					Title = "David Copperfield",
-					Year = 1850,
-					AuthorId = 2,
-					Price = 15,
-					Genre = "Bildungsroman"
-				},
-				new BankAccount()
-				{
-					Id = 4,
-					Title = "Don Quixote",
-					Year = 1617,
-					AuthorId = 3,
-					Price = 8.95M,
-					Genre = "Picaresque"
-				});*/
+					Id = 1,
+					Number = "81726354",
+					Balance = 550,
+					OpenDate = DateTime.Now,
+					BankCustomerId = 3
+				});
 		}
     }
 }

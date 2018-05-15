@@ -18,7 +18,9 @@ namespace PWApi.Models
 
 		[Key]	
 		public int Id { get; set; }
-
+		[StringLength(8)]
+		[Index(IsUnique = true)]
+		[MaxLength(8), MinLength(8)]
 		public string Number { get; set; }
 		public float Balance { get; set; }
 		public DateTime OpenDate { get; set; }
@@ -26,13 +28,14 @@ namespace PWApi.Models
 		//foreign key
 		
 		public int BankCustomerId { get; set; }
-		[ForeignKey("BankCustomerId")]
 		public BankCustomer AccountOwner { get; set; }
 
 		//for navigation Purposes
 		//public virtual ICollection<Transaction> Transactions { get; set; }
 
-		[InverseProperty("SorceBankAccountId")]
-		public List<Transaction> TransactionsFromAccount { get; set; }
+		//[InverseProperty("SorceBankAccountId")]
+		public virtual List<Transaction> TransactionsFromAccount { get; set; }
+		public virtual List<Transaction> TransactionsToAccount { get; set; }
+
 	}
 }
