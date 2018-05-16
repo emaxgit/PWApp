@@ -48,22 +48,7 @@ namespace PWApi.Models
 
 	
 
-	/*public class ApplicationDbContext : DbContext
-	{
-		public ApplicationDbContext()
-			: base("DefaultConnection")
-		{
-		}
-
-		public DbSet<BankAccount> BankAccounts { get; set; }
-		public DbSet<Transaction> Transactions { get; set; }
-		public DbSet<Client> Clients { get; set; }
-
-		public static ApplicationDbContext Create()
-		{
-			return new ApplicationDbContext();
-		}
-	}*/
+	
 
 
 
