@@ -41,7 +41,7 @@ namespace PWApi.Models
 			modelBuilder.Entity<BankCustomer>()
 				.HasOptional(x => x.Account)
 				.WithRequired(c => c.AccountOwner)
-				.Map(m => m.MapKey("Id"))
+				.Map(m => m.MapKey("BankCustomerId"))
 				.WillCascadeOnDelete(true);
 		}
 	}

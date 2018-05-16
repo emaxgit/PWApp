@@ -246,6 +246,10 @@
     <Compile Include="Migrations\201805160719555_initial.Designer.cs">
       <DependentUpon>201805160719555_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805160740348_changeFK.cs" />
+    <Compile Include="Migrations\201805160740348_changeFK.Designer.cs">
+      <DependentUpon>201805160740348_changeFK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -356,6 +360,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805160719555_initial.resx">
       <DependentUpon>201805160719555_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805160740348_changeFK.resx">
+      <DependentUpon>201805160740348_changeFK.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
