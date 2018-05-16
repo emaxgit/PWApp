@@ -10,6 +10,6 @@ namespace PWApi.Models
 		public int Id { get; set; }
 		public int OwnerId { get; set; }
 		public string OwnerName { get; set; }
-		public float Balance { get; set; }
+		public decimal Balance { get; set; }
 	}
 }

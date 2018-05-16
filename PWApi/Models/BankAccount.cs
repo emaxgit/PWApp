@@ -25,7 +25,7 @@ namespace PWApi.Models
 		[Index(IsUnique = true)]
 		[MaxLength(8), MinLength(8)]
 		public string Number { get; set; }
-		public float Balance { get; set; }
+		public decimal Balance { get; set; }
 		public DateTime OpenDate { get; set; }
 
 		// relation one-to-one

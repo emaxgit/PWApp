@@ -18,7 +18,9 @@ namespace PWApi.Models
 			public int Id { get; set; }
 			public string Description { get; set; }
 			public DateTime Date { get; set; }
-			public float Ammount { get; set; }
+			public decimal Ammount { get; set; }
+			public decimal ResultingOwnerBalance { get; set; }
+
 
 		//foreign keys
 
