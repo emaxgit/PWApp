@@ -8,8 +8,8 @@ namespace PWApi.Models
 	public class ClientDTO
 	{
 		public int Id { get; set; }
-		public int OwnerId { get; set; }
-		public string OwnerName { get; set; }
-		public decimal Balance { get; set; }
+		/*public int OwnerId { get; set; }*/
+		public string ClientName { get; set; }
+		public decimal ClientBalance { get; set; }
 	}
 }

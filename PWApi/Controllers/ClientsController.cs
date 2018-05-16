@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -23,21 +24,25 @@ namespace PWApi.Controllers
             return db.Clients;
         }*/
 
-		/*// Typed lambda expression for Select() method. 
-		private static readonly Expression<Func<Client, ClientDTO>> AsBookDto =
-			x => new BookDto
+		// Typed lambda expression for Select() method. 
+		private static readonly Expression<Func<Client, ClientDTO>> AsClientDTO =
+			x => new ClientDTO
 			{
-				Title = x.Title,
+				/*Title = x.Title,
 				Author = x.Author.Name,
-				Genre = x.Genre
-			};*/
+				Genre = x.Genre*/
+				Id = x.Id,
+				ClientName = x.FirstName + " " + x.LastName,
+				ClientBalance = x.Account.Balance
+				
+			};
 
 		[HttpGet]
 		[Route("api/clients")]
-		public IQueryable<BankAccountDTO> GetBankAccount()
+		public IQueryable<ClientDTO> GetBankAccount()
 		{
 
-			var acc = from a in db.BankAccounts
+			/*var acc = from a in db.BankAccounts
 
 					  select new BankAccountDTO()
 					  {
@@ -48,22 +53,35 @@ namespace PWApi.Controllers
 					  }
 
 					  ;
-			return acc;
+			return acc;*/
+			return db.Clients./*Include(b => b.Account).*/Select(AsClientDTO);
 
 		}
 
 		// GET: api/Clients/5
-		[ResponseType(typeof(Client))]
+		[HttpGet]
+		[Route("api/clients/{id}")]
+		[ResponseType(typeof(ClientDTO))]
         public async Task<IHttpActionResult> GetClient(int id)
         {
-            Client client = await db.Clients.FindAsync(id);
-            if (client == null)
-            {
-                return NotFound();
-            }
+			/* Client client = await db.Clients.FindAsync(id);
+			 if (client == null)
+			 {
+				 return NotFound();
+			 }
 
-            return Ok(client);
-        }
+			 return Ok(client);*/
+			ClientDTO client = await db.Clients/*.Include(b => b.Account)*/
+				.Where(b => b.Id == id)
+				.Select(AsClientDTO)
+				.FirstOrDefaultAsync();
+			if (client == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(client);
+		}
 
         // PUT: api/Clients/5
         [ResponseType(typeof(void))]
