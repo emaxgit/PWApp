@@ -1,12 +1,12 @@
 ﻿var ViewModel = function () {
 	var self = this;
-	self.clients = ko.observableArray();
+	self.transactions = ko.observableArray();
 	self.error = ko.observable();
 
 	var userId = 1;
 
-	//var clientsUri = '/api/clients/'+userId;
-	var clientsUri = '/api/clients/1/tran'
+	var clientsUri = '/api/clients/'+userId+'/';
+	var transUri = clientsUri + 'trans';//'/api/clients/1/tran'
 
 	function ajaxHelper(uri, method, data) {
 		self.error(''); // Clear error message
@@ -21,14 +21,14 @@
 		});
 	}
 
-	function getAllClients() {
-		ajaxHelper(clientsUri, 'GET').done(function (data) {
-			self.clients(data);
+	function getAllTransactions() {
+		ajaxHelper(transUri, 'GET').done(function (data) {
+			self.transactions(data);
 		});
 	}
 
 	// Fetch the initial data.
-	getAllClients();
+	getAllTransactions();
 };
 
 ko.applyBindings(new ViewModel());

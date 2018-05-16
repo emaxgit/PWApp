@@ -113,7 +113,7 @@ namespace PWApi.Controllers
 
 		// GET: api/Clients/5/Transactions
 		[HttpGet]
-		[Route("{id}/tran")]
+		[Route("{id}/trans")]
 		[ResponseType(typeof(TransactionDTO))]
 		public IQueryable<TransactionDTO> GetClientTransactions(int id)
 		{
