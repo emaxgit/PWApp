@@ -3,7 +3,10 @@
 	self.clients = ko.observableArray();
 	self.error = ko.observable();
 
-	var clientsUri = '/api/clients/';
+	var userId = 1;
+
+	//var clientsUri = '/api/clients/'+userId;
+	var clientsUri = '/api/clients/1/tran'
 
 	function ajaxHelper(uri, method, data) {
 		self.error(''); // Clear error message
