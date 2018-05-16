@@ -96,6 +96,25 @@ namespace PWApi.Controllers
 			return Ok(account);
 		}
 
+		// GET: api/Clients/5/Transactions
+		[HttpGet]
+		[Route("{id}/tran")]
+		[ResponseType(typeof(BankAccountDTO))]
+		public async Task<IHttpActionResult> GetClientTransactions(int id)
+		{
+
+			BankAccountDTO account = await db.BankAccounts
+				.Where(a => a.AccountOwner.Id == id)
+				.Select(AsBankAccountDTO)
+				.FirstOrDefaultAsync();
+			if (account == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(account);
+		}
+
 		// PUT: api/Clients/5
 		[ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutClient(int id, Client client)
