@@ -6,7 +6,7 @@ using System.Web;
 
 namespace PWApi.Models
 {
-	public class BankCustomer
+	public class Client
 	{
 		
 			public int Id { get; set; }
@@ -17,7 +17,7 @@ namespace PWApi.Models
 
 		    public virtual BankAccount Account{ get; set; }
 
-		/*[InverseProperty("BankCustomerId")]
+		/*[InverseProperty("ClientId")]
 		public BankAccount BankAccounts { get; set; }*/
 
 

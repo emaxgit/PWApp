@@ -30,7 +30,7 @@ namespace PWApi.Models
 
 		// relation one-to-one
 		
-		public virtual BankCustomer AccountOwner { get; set; }
+		public virtual Client AccountOwner { get; set; }
 
 
 		//for navigation Purposes

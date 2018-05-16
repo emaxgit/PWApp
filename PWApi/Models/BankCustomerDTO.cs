@@ -5,7 +5,7 @@ using System.Web;
 
 namespace PWApi.Models
 {
-	public class BankCustomerDTO
+	public class ClientDTO
 	{
 		public int Id { get; set; }
 		public int OwnerId { get; set; }

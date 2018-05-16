@@ -28,7 +28,7 @@ namespace PWApi.Models
 
 		public DbSet<BankAccount> BankAccounts { get; set; }
 		public DbSet<Transaction> Transactions { get; set; }
-		public DbSet<BankCustomer> BankCustomers { get; set; }
+		public DbSet<Client> Clients { get; set; }
 
 		public static ApplicationDbContext Create()
         {
@@ -38,7 +38,7 @@ namespace PWApi.Models
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
-			modelBuilder.Entity<BankCustomer>()
+			modelBuilder.Entity<Client>()
 				.HasOptional(x => x.Account)
 				.WithRequired(c => c.AccountOwner)
 				.Map(m => m.MapKey("ClientId"))
@@ -57,7 +57,7 @@ namespace PWApi.Models
 
 		public DbSet<BankAccount> BankAccounts { get; set; }
 		public DbSet<Transaction> Transactions { get; set; }
-		public DbSet<BankCustomer> BankCustomers { get; set; }
+		public DbSet<Client> Clients { get; set; }
 
 		public static ApplicationDbContext Create()
 		{

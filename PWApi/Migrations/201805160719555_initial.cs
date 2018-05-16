@@ -18,12 +18,12 @@ namespace PWApi.Migrations
                         Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.BankAccountId)
-                .ForeignKey("dbo.BankCustomers", t => t.Id, cascadeDelete: true)
+                .ForeignKey("dbo.Clients", t => t.Id, cascadeDelete: true)
                 .Index(t => t.Number, unique: true)
                 .Index(t => t.Id);
             
             CreateTable(
-                "dbo.BankCustomers",
+                "dbo.Clients",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -139,7 +139,7 @@ namespace PWApi.Migrations
             DropForeignKey("dbo.Transactions", "BankAccount_BankAccountId", "dbo.BankAccounts");
             DropForeignKey("dbo.Transactions", "SourseBankAccount_BankAccountId", "dbo.BankAccounts");
             DropForeignKey("dbo.Transactions", "CorrespondentBankAccount_BankAccountId", "dbo.BankAccounts");
-            DropForeignKey("dbo.BankAccounts", "Id", "dbo.BankCustomers");
+            DropForeignKey("dbo.BankAccounts", "Id", "dbo.Clients");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
@@ -158,7 +158,7 @@ namespace PWApi.Migrations
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Transactions");
-            DropTable("dbo.BankCustomers");
+            DropTable("dbo.Clients");
             DropTable("dbo.BankAccounts");
         }
     }

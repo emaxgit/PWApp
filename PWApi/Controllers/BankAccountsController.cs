@@ -20,7 +20,7 @@ namespace PWApi.Controllers
 		/* // GET: api/BankAccounts
 		 public IQueryable<BankAccount> GetBankAccounts()
 		 {
-			 return db.BankAccounts.Where(a => a.BankCustomerId == userId).Include(a => a.Transactions);
+			 return db.BankAccounts.Where(a => a.ClientId == userId).Include(a => a.Transactions);
 		 }*/
 
 		// GET: api/Accounts

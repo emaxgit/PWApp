@@ -13,45 +13,45 @@ using PWApi.Models;
 
 namespace PWApi.Controllers
 {
-    public class BankCustomersController : ApiController
+    public class ClientsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/BankCustomers
-        public IQueryable<BankCustomer> GetBankCustomers()
+        // GET: api/Clients
+        public IQueryable<Client> GetClients()
         {
 			
-			return db.BankCustomers;
+			return db.Clients;
         }
 
-        // GET: api/BankCustomers/5
-        [ResponseType(typeof(BankCustomer))]
-        public async Task<IHttpActionResult> GetBankCustomer(int id)
+        // GET: api/Clients/5
+        [ResponseType(typeof(Client))]
+        public async Task<IHttpActionResult> GetClient(int id)
         {
-            BankCustomer bankCustomer = await db.BankCustomers.FindAsync(id);
-            if (bankCustomer == null)
+            Client Client = await db.Clients.FindAsync(id);
+            if (Client == null)
             {
                 return NotFound();
             }
 
-            return Ok(bankCustomer);
+            return Ok(Client);
         }
 
-        // PUT: api/BankCustomers/5
+        // PUT: api/Clients/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutBankCustomer(int id, BankCustomer bankCustomer)
+        public async Task<IHttpActionResult> PutClient(int id, Client Client)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != bankCustomer.Id)
+            if (id != Client.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(bankCustomer).State = EntityState.Modified;
+            db.Entry(Client).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace PWApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BankCustomerExists(id))
+                if (!ClientExists(id))
                 {
                     return NotFound();
                 }
@@ -72,35 +72,35 @@ namespace PWApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/BankCustomers
-        [ResponseType(typeof(BankCustomer))]
-        public async Task<IHttpActionResult> PostBankCustomer(BankCustomer bankCustomer)
+        // POST: api/Clients
+        [ResponseType(typeof(Client))]
+        public async Task<IHttpActionResult> PostClient(Client Client)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.BankCustomers.Add(bankCustomer);
+            db.Clients.Add(Client);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = bankCustomer.Id }, bankCustomer);
+            return CreatedAtRoute("DefaultApi", new { id = Client.Id }, Client);
         }
 
-        // DELETE: api/BankCustomers/5
-        [ResponseType(typeof(BankCustomer))]
-        public async Task<IHttpActionResult> DeleteBankCustomer(int id)
+        // DELETE: api/Clients/5
+        [ResponseType(typeof(Client))]
+        public async Task<IHttpActionResult> DeleteClient(int id)
         {
-            BankCustomer bankCustomer = await db.BankCustomers.FindAsync(id);
-            if (bankCustomer == null)
+            Client Client = await db.Clients.FindAsync(id);
+            if (Client == null)
             {
                 return NotFound();
             }
 
-            db.BankCustomers.Remove(bankCustomer);
+            db.Clients.Remove(Client);
             await db.SaveChangesAsync();
 
-            return Ok(bankCustomer);
+            return Ok(Client);
         }
 
         protected override void Dispose(bool disposing)
@@ -112,9 +112,9 @@ namespace PWApi.Controllers
             base.Dispose(disposing);
         }
 
-        private bool BankCustomerExists(int id)
+        private bool ClientExists(int id)
         {
-            return db.BankCustomers.Count(e => e.Id == id) > 0;
+            return db.Clients.Count(e => e.Id == id) > 0;
         }
     }
 }

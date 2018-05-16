@@ -254,6 +254,10 @@
     <Compile Include="Migrations\201805160752133_changeFKOneMoreTime.Designer.cs">
       <DependentUpon>201805160752133_changeFKOneMoreTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805160759536_changeEntName.cs" />
+    <Compile Include="Migrations\201805160759536_changeEntName.Designer.cs">
+      <DependentUpon>201805160759536_changeEntName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -370,6 +374,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805160752133_changeFKOneMoreTime.resx">
       <DependentUpon>201805160752133_changeFKOneMoreTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805160759536_changeEntName.resx">
+      <DependentUpon>201805160759536_changeEntName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
