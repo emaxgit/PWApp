@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using PWApi.DTO;
 using PWApi.Models;
 
 namespace PWApi.Controllers
@@ -47,6 +48,20 @@ namespace PWApi.Controllers
 				Balance=a.Balance,
 				Number = a.Number,
 				OpenDate= a.OpenDate
+			};
+
+
+		private static readonly Expression<Func<Transaction, TransactionDTO>> AsTransactionDTO =
+			a => new TransactionDTO
+			{
+				Id = a.Id,
+				OwnerId = a.SourseBankAccount.AccountOwner.Id,
+				Description = a.Description,
+				Ammount = a.Ammount,
+				ResultingOwnerBalance = a.ResultingOwnerBalance,
+				TransactionDate =a.TransactionDate
+
+				
 			};
 
 		[HttpGet]
@@ -99,20 +114,14 @@ namespace PWApi.Controllers
 		// GET: api/Clients/5/Transactions
 		[HttpGet]
 		[Route("{id}/tran")]
-		[ResponseType(typeof(BankAccountDTO))]
-		public async Task<IHttpActionResult> GetClientTransactions(int id)
+		[ResponseType(typeof(TransactionDTO))]
+		public IQueryable<TransactionDTO> GetClientTransactions(int id)
 		{
+			return db.Transactions.Include(b => b.SourseBankAccount)
+				.Where(b => b.SourseBankAccount.AccountOwner.Id == id)
+				.Select(AsTransactionDTO);
 
-			BankAccountDTO account = await db.BankAccounts
-				.Where(a => a.AccountOwner.Id == id)
-				.Select(AsBankAccountDTO)
-				.FirstOrDefaultAsync();
-			if (account == null)
-			{
-				return NotFound();
-			}
 
-			return Ok(account);
 		}
 
 		// PUT: api/Clients/5

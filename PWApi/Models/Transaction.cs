@@ -12,32 +12,23 @@ namespace PWApi.Models
 			public Transaction()
 			{
 				
-				this.Date = DateTime.UtcNow;
+				this.TransactionDate = DateTime.UtcNow;
 			}
 
 			public int Id { get; set; }
 			public string Description { get; set; }
-			public DateTime Date { get; set; }
+			public DateTime TransactionDate { get; set; }
 			public decimal Ammount { get; set; }
 			public decimal ResultingOwnerBalance { get; set; }
 
 
 		//foreign keys
 
-		public int CorrecpondentBankAccountAId { get; set; }
+		
 		//[ForeignKey("CorrecpondentBankAccountId")]
-		public BankAccount CorrespondentBankAccount { get; set; }
-
-
-		
-		public int SorceBankAccountId { get; set; }
-		//[ForeignKey("SorceBankAccountId")]
-		public BankAccount SourseBankAccount { get; set; }
-
-
-		
-			
-
+		public virtual BankAccount CorrespondentBankAccount { get; set; }
+		//[ForeignKey("SorceBankAccountId")
+		public virtual BankAccount SourseBankAccount { get; set; }
 
 	}
 	

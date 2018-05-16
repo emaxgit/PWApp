@@ -36,8 +36,9 @@ namespace PWApi.Models
 		//for navigation Purposes
 		//public virtual ICollection<Transaction> Transactions { get; set; }
 
-		//[InverseProperty("SorceBankAccountId")]
+		[InverseProperty("SourseBankAccount")]
 		public virtual List<Transaction> TransactionsFromAccount { get; set; }
+		[InverseProperty("CorrespondentBankAccount")]
 		public virtual List<Transaction> TransactionsToAccount { get; set; }
 
 	}
