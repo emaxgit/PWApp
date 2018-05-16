@@ -260,6 +260,7 @@
     <Compile Include="Models\BankAccount.cs" />
     <Compile Include="Models\BankAccountDTO.cs" />
     <Compile Include="Models\BankCustomer.cs" />
+    <Compile Include="Models\BankCustomerDTO.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
