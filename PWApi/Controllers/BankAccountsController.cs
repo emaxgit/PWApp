@@ -28,14 +28,14 @@ namespace PWApi.Controllers
 		[Route("api/ba")]
 		public IQueryable<BankAccountDTO> GetBankAccount ()
 		{
-		
-		     var acc = from a in db.BankAccounts
+
+			var acc = from a in db.BankAccounts
 					 
 					  select new BankAccountDTO()
 					  {
 						  Id = a.BankAccountId,
 						  OwnerId = a.BankAccountId,
-						  OwnerName = a.AccountOwner.FirstName + " " + a.AccountOwner.LastName,
+						  //OwnerName = a.AccountOwner.FirstName + " " + a.AccountOwner.LastName,
 						  Balance = a.Balance
 					  }
 
@@ -56,7 +56,7 @@ namespace PWApi.Controllers
 			{
 				Id = a.BankAccountId,
 				OwnerId = a.BankAccountId,
-				OwnerName = a.AccountOwner.FirstName + " " + a.AccountOwner.LastName,
+				//OwnerName = a.AccountOwner.FirstName + " " + a.AccountOwner.LastName,
 				Balance = a.Balance
 
 			}).SingleOrDefaultAsync(a => a.OwnerId== ownerId);
@@ -152,3 +152,4 @@ namespace PWApi.Controllers
         }
     }
 }
+ 

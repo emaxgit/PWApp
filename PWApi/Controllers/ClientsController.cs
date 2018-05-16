@@ -14,7 +14,8 @@ using PWApi.Models;
 
 namespace PWApi.Controllers
 {
-    public class ClientsController : ApiController
+	[RoutePrefix("api/clients")]
+	public class ClientsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -37,40 +38,33 @@ namespace PWApi.Controllers
 				
 			};
 
+		private static readonly Expression<Func<BankAccount, BankAccountDTO>> AsBankAccountDTO =
+			a => new BankAccountDTO
+			{
+				
+				Id = a.BankAccountId,
+				OwnerId= a.AccountOwner.Id,
+				Balance=a.Balance,
+				Number = a.Number,
+				OpenDate= a.OpenDate
+			};
+
 		[HttpGet]
-		[Route("api/clients")]
+		[Route("")]
 		public IQueryable<ClientDTO> GetBankAccount()
 		{
 
-			/*var acc = from a in db.BankAccounts
-
-					  select new BankAccountDTO()
-					  {
-						  Id = a.BankAccountId,
-						  OwnerId = a.BankAccountId,
-						  OwnerName = a.AccountOwner.FirstName + " " + a.AccountOwner.LastName,
-						  Balance = a.Balance
-					  }
-
-					  ;
-			return acc;*/
 			return db.Clients./*Include(b => b.Account).*/Select(AsClientDTO);
 
 		}
 
 		// GET: api/Clients/5
 		[HttpGet]
-		[Route("api/clients/{id}")]
+		[Route("{id:int}")]
 		[ResponseType(typeof(ClientDTO))]
         public async Task<IHttpActionResult> GetClient(int id)
         {
-			/* Client client = await db.Clients.FindAsync(id);
-			 if (client == null)
-			 {
-				 return NotFound();
-			 }
-
-			 return Ok(client);*/
+			
 			ClientDTO client = await db.Clients/*.Include(b => b.Account)*/
 				.Where(b => b.Id == id)
 				.Select(AsClientDTO)
@@ -83,8 +77,27 @@ namespace PWApi.Controllers
 			return Ok(client);
 		}
 
-        // PUT: api/Clients/5
-        [ResponseType(typeof(void))]
+		// GET: api/Clients/5/Accounts
+		[HttpGet]
+		[Route("{id}/accounts")]
+		[ResponseType(typeof(BankAccountDTO))]
+		public async Task<IHttpActionResult> GetClientAccount(int id)
+		{
+
+			BankAccountDTO account = await db.BankAccounts
+				.Where(a => a.AccountOwner.Id == id)
+				.Select(AsBankAccountDTO)
+				.FirstOrDefaultAsync();
+			if (account == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(account);
+		}
+
+		// PUT: api/Clients/5
+		[ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutClient(int id, Client client)
         {
             if (!ModelState.IsValid)

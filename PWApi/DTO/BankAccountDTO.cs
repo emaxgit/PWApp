@@ -9,7 +9,10 @@ namespace PWApi.Models
 	{
 		public int Id { get; set; }
 		public int OwnerId { get; set; }
-		public string OwnerName { get; set; }
+		/*public string OwnerName { get; set; }*/
+		public string Number { get; set; }
 		public decimal Balance { get; set; }
+		public DateTime OpenDate { get; set; }
+
 	}
 }
