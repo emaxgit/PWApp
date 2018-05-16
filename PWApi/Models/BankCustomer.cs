@@ -15,11 +15,13 @@ namespace PWApi.Models
 			public string FirstName { get; set; }
 			public string LastName { get; set; }
 
-		    /*[InverseProperty("BankCustomerId")]
-		    public BankAccount BankAccounts { get; set; }*/
+		    public virtual BankAccount Account{ get; set; }
+
+		/*[InverseProperty("BankCustomerId")]
+		public BankAccount BankAccounts { get; set; }*/
 
 
-		    public virtual List<BankAccount> BankAccounts { get; set; } 
+		// public virtual List<BankAccount> BankAccounts { get; set; } 
 
 	}
 }

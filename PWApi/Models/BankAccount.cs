@@ -16,8 +16,11 @@ namespace PWApi.Models
 			this.Balance = 500;
 		}*/
 
-		[Key]	
-		public int Id { get; set; }
+
+		[Key]
+		public int BankAccountId { get; set; }
+
+		//public int OwnerId { get; set; }
 		[StringLength(8)]
 		[Index(IsUnique = true)]
 		[MaxLength(8), MinLength(8)]
@@ -25,10 +28,10 @@ namespace PWApi.Models
 		public float Balance { get; set; }
 		public DateTime OpenDate { get; set; }
 
-		//foreign key
+		// relation one-to-one
 		
-		public int BankCustomerId { get; set; }
-		public BankCustomer AccountOwner { get; set; }
+		public virtual BankCustomer AccountOwner { get; set; }
+
 
 		//for navigation Purposes
 		//public virtual ICollection<Transaction> Transactions { get; set; }

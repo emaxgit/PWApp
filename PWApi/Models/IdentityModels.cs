@@ -34,7 +34,19 @@ namespace PWApi.Models
         {
             return new ApplicationDbContext();
         }
-    }
+
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		{
+			base.OnModelCreating(modelBuilder);
+			modelBuilder.Entity<BankCustomer>()
+				.HasOptional(x => x.Account)
+				.WithRequired(c => c.AccountOwner)
+				.Map(m => m.MapKey("Id"))
+				.WillCascadeOnDelete(true);
+		}
+	}
+
+	
 
 	/*public class ApplicationDbContext : DbContext
 	{
@@ -54,4 +66,6 @@ namespace PWApi.Models
 	}*/
 
 
-	}
+
+
+}

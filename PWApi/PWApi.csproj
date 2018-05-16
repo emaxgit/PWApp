@@ -242,17 +242,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805151035153_initial.cs" />
-    <Compile Include="Migrations\201805151035153_initial.Designer.cs">
-      <DependentUpon>201805151035153_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805151244141_updated.cs" />
-    <Compile Include="Migrations\201805151244141_updated.Designer.cs">
-      <DependentUpon>201805151244141_updated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805151538234_newcontext.cs" />
-    <Compile Include="Migrations\201805151538234_newcontext.Designer.cs">
-      <DependentUpon>201805151538234_newcontext.cs</DependentUpon>
+    <Compile Include="Migrations\201805160719555_initial.cs" />
+    <Compile Include="Migrations\201805160719555_initial.Designer.cs">
+      <DependentUpon>201805160719555_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -312,7 +304,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -360,14 +354,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805151035153_initial.resx">
-      <DependentUpon>201805151035153_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805151244141_updated.resx">
-      <DependentUpon>201805151244141_updated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805151538234_newcontext.resx">
-      <DependentUpon>201805151538234_newcontext.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805160719555_initial.resx">
+      <DependentUpon>201805160719555_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

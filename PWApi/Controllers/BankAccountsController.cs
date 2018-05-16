@@ -33,8 +33,8 @@ namespace PWApi.Controllers
 					 
 					  select new BankAccountDTO()
 					  {
-						  Id = a.Id,
-						  OwnerId = a.BankCustomerId,
+						  Id = a.BankAccountId,
+						  OwnerId = a.BankAccountId,
 						  OwnerName = a.AccountOwner.FirstName + " " + a.AccountOwner.LastName,
 						  Balance = a.Balance
 					  }
@@ -54,8 +54,8 @@ namespace PWApi.Controllers
 			BankAccountDTO bankAccount = await db.BankAccounts.Select(a =>
 			new BankAccountDTO()
 			{
-				Id = a.Id,
-				OwnerId = a.BankCustomerId,
+				Id = a.BankAccountId,
+				OwnerId = a.BankAccountId,
 				OwnerName = a.AccountOwner.FirstName + " " + a.AccountOwner.LastName,
 				Balance = a.Balance
 
@@ -80,7 +80,7 @@ namespace PWApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != bankAccount.Id)
+            if (id != bankAccount.BankAccountId)
             {
                 return BadRequest();
             }
@@ -118,7 +118,7 @@ namespace PWApi.Controllers
             db.BankAccounts.Add(bankAccount);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = bankAccount.Id }, bankAccount);
+            return CreatedAtRoute("DefaultApi", new { id = bankAccount.BankAccountId }, bankAccount);
         }
 
         // DELETE: api/BankAccounts/5
@@ -148,7 +148,7 @@ namespace PWApi.Controllers
 
         private bool BankAccountExists(int id)
         {
-            return db.BankAccounts.Count(e => e.Id == id) > 0;
+            return db.BankAccounts.Count(e => e.BankAccountId == id) > 0;
         }
     }
 }
