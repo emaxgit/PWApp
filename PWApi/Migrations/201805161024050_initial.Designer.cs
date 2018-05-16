@@ -7,13 +7,13 @@ namespace PWApi.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class changetrans : IMigrationMetadata
+    public sealed partial class initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(changetrans));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201805161014534_changetrans"; }
+            get { return "201805161024050_initial"; }
         }
         
         string IMigrationMetadata.Source

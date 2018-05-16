@@ -13,14 +13,14 @@ namespace PWApi.Migrations
                     {
                         BankAccountId = c.Int(nullable: false, identity: true),
                         Number = c.String(maxLength: 8),
-                        Balance = c.Single(nullable: false),
+                        Balance = c.Decimal(nullable: false, precision: 18, scale: 2),
                         OpenDate = c.DateTime(nullable: false),
-                        Id = c.Int(nullable: false),
+                        ClientId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.BankAccountId)
-                .ForeignKey("dbo.Clients", t => t.Id, cascadeDelete: true)
+                .ForeignKey("dbo.Clients", t => t.ClientId, cascadeDelete: true)
                 .Index(t => t.Number, unique: true)
-                .Index(t => t.Id);
+                .Index(t => t.ClientId);
             
             CreateTable(
                 "dbo.Clients",
@@ -40,24 +40,17 @@ namespace PWApi.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Description = c.String(),
-                        Date = c.DateTime(nullable: false),
-                        Ammount = c.Single(nullable: false),
-                        CorrecpondentBankAccountAId = c.Int(nullable: false),
-                        SorceBankAccountId = c.Int(nullable: false),
-                        CorrespondentBankAccount_BankAccountId = c.Int(),
+                        TransactionDate = c.DateTime(nullable: false),
+                        Ammount = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        ResultingOwnerBalance = c.Decimal(nullable: false, precision: 18, scale: 2),
                         SourseBankAccount_BankAccountId = c.Int(),
-                        BankAccount_BankAccountId = c.Int(),
-                        BankAccount_BankAccountId1 = c.Int(),
+                        CorrespondentBankAccount_BankAccountId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.BankAccounts", t => t.CorrespondentBankAccount_BankAccountId)
                 .ForeignKey("dbo.BankAccounts", t => t.SourseBankAccount_BankAccountId)
-                .ForeignKey("dbo.BankAccounts", t => t.BankAccount_BankAccountId)
-                .ForeignKey("dbo.BankAccounts", t => t.BankAccount_BankAccountId1)
-                .Index(t => t.CorrespondentBankAccount_BankAccountId)
+                .ForeignKey("dbo.BankAccounts", t => t.CorrespondentBankAccount_BankAccountId)
                 .Index(t => t.SourseBankAccount_BankAccountId)
-                .Index(t => t.BankAccount_BankAccountId)
-                .Index(t => t.BankAccount_BankAccountId1);
+                .Index(t => t.CorrespondentBankAccount_BankAccountId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -135,22 +128,18 @@ namespace PWApi.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Transactions", "BankAccount_BankAccountId1", "dbo.BankAccounts");
-            DropForeignKey("dbo.Transactions", "BankAccount_BankAccountId", "dbo.BankAccounts");
-            DropForeignKey("dbo.Transactions", "SourseBankAccount_BankAccountId", "dbo.BankAccounts");
             DropForeignKey("dbo.Transactions", "CorrespondentBankAccount_BankAccountId", "dbo.BankAccounts");
-            DropForeignKey("dbo.BankAccounts", "Id", "dbo.Clients");
+            DropForeignKey("dbo.Transactions", "SourseBankAccount_BankAccountId", "dbo.BankAccounts");
+            DropForeignKey("dbo.BankAccounts", "ClientId", "dbo.Clients");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Transactions", new[] { "BankAccount_BankAccountId1" });
-            DropIndex("dbo.Transactions", new[] { "BankAccount_BankAccountId" });
-            DropIndex("dbo.Transactions", new[] { "SourseBankAccount_BankAccountId" });
             DropIndex("dbo.Transactions", new[] { "CorrespondentBankAccount_BankAccountId" });
-            DropIndex("dbo.BankAccounts", new[] { "Id" });
+            DropIndex("dbo.Transactions", new[] { "SourseBankAccount_BankAccountId" });
+            DropIndex("dbo.BankAccounts", new[] { "ClientId" });
             DropIndex("dbo.BankAccounts", new[] { "Number" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");

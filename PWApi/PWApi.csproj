@@ -243,25 +243,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805160719555_initial.cs" />
-    <Compile Include="Migrations\201805160719555_initial.Designer.cs">
-      <DependentUpon>201805160719555_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805160740348_changeFK.cs" />
-    <Compile Include="Migrations\201805160740348_changeFK.Designer.cs">
-      <DependentUpon>201805160740348_changeFK.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805160752133_changeFKOneMoreTime.cs" />
-    <Compile Include="Migrations\201805160752133_changeFKOneMoreTime.Designer.cs">
-      <DependentUpon>201805160752133_changeFKOneMoreTime.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805160759536_changeEntName.cs" />
-    <Compile Include="Migrations\201805160759536_changeEntName.Designer.cs">
-      <DependentUpon>201805160759536_changeEntName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805160827478_somechanges.cs" />
-    <Compile Include="Migrations\201805160827478_somechanges.Designer.cs">
-      <DependentUpon>201805160827478_somechanges.cs</DependentUpon>
+    <Compile Include="Migrations\201805161024050_initial.cs" />
+    <Compile Include="Migrations\201805161024050_initial.Designer.cs">
+      <DependentUpon>201805161024050_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -371,20 +355,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805160719555_initial.resx">
-      <DependentUpon>201805160719555_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805160740348_changeFK.resx">
-      <DependentUpon>201805160740348_changeFK.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805160752133_changeFKOneMoreTime.resx">
-      <DependentUpon>201805160752133_changeFKOneMoreTime.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805160759536_changeEntName.resx">
-      <DependentUpon>201805160759536_changeEntName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805160827478_somechanges.resx">
-      <DependentUpon>201805160827478_somechanges.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805161024050_initial.resx">
+      <DependentUpon>201805161024050_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
